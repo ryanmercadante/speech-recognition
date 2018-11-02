@@ -1,5 +1,6 @@
 import pyaudio
 import wave
+import speech_recognition as sr
 
 def play_audio(filename):
     chunk = 1024
@@ -22,4 +23,27 @@ def play_audio(filename):
     stream.close()
     pa.terminate()
 
-play_audio('./audio/wet.wav')
+r = sr.Recognizer()
+
+def init_speech():
+    print('Listening...')
+
+    play_audio('./audio/wet.wav')
+
+    with sr.Microphone() as source:
+        print('Say something')
+        audio = r.listen(source)
+
+    play_audio('./audio/suppressed.wav')
+
+    command = ""
+
+    try:
+        command = r.recognize_google(audio)
+    except:
+        print('Could not understand you, bro.')
+
+    print('Your command:')
+    print(command)
+
+init_speech()
