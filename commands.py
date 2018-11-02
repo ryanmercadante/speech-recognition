@@ -14,6 +14,11 @@ class Commander:
             else:
                 self.respond('My name is python commander. How are you?')
 
+        if 'launch' in 'open' in text:
+            app = text.split(' ', 1)[-1]
+            self.respond('Opening ' + app)
+            os.system('open -a ' + app + '.app')
+
     def respond(self, response):
         print(response)
         subprocess.call('say ' + response, shell=True)
