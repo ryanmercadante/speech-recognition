@@ -54,7 +54,7 @@ def init_speech():
     print('Your command:')
     print(command)
 
-    if command in ['quit', 'exit', 'bye', 'goodbye']:
+    if command in ['quit', 'exit', 'bye', 'goodbye', 'see you later', 'see ya', 'adios']:
         global running
         running = False
 
